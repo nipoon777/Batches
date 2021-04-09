@@ -5,17 +5,6 @@ console.log("Before");
 // return Promise -> object
 // resolve -> work complete
 // reject-> work error
-function MyFilereadPromise(filePath) {
-    return new Promise(function (resolve, reject) {
-        fs.readFile(filePath, function cb(err, data) {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(data);
-            }
-        })
-    })
-}
 // user
 let frp = MyFilereadPromise("f1.txt");
 console.log(frp)
@@ -24,7 +13,7 @@ frp
         console.log("data->" + data)
     })
 frp
-    .catch(function (err) {
+.catch(function (err) {
         console.log(err);
     })
 let f1ReadP = fs.promises.readFile("f1.txt");
@@ -33,7 +22,8 @@ f1ReadP
     .then(function (data) {
         console.log("data" + data);
     })
-f1ReadP.catch(function (err) {
+f1ReadP
+.catch(function (err) {
     console.log(err);
 })
 

@@ -42,10 +42,8 @@ browserPromise
         return warmupClick;
     }).then(function () {
         let url = gtab.url();
-
         let questionObj = codes[0];
-        questionSolver(url, questionObj.soln, questionObj.qName);
-
+      return  questionSolver(url, questionObj.soln, questionObj.qName);
     })
     .catch(function (err) {
         console.log(err);
@@ -114,7 +112,6 @@ function questionSolver(modulepageUrl, code, questionName) {
                 let editorWillBeClickedPromise = gtab.click(".monaco-editor.no-user-select.vs");
                 return editorWillBeClickedPromise;
             })
-
             .then(function () {
                 // ctrl a
                 let aisPressedpromise = gtab.keyboard.press("a");
